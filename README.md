@@ -1,8 +1,8 @@
 # Digital Mapping of Literature
 
-This repository contains data and scripts in R related with GIS methods to work with visualization of geographical data.
+This repository contains data and scripts in R as showcases related with GIS methods to work with visualization of geographical data.
 
-## One example of geocode and ploting 
+## One example of geocoding and ploting 
 
 - Run and interact with the example (Jupyter notebook and Binder; it takes time to load): [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/editio/mapping.literature/master)
 
