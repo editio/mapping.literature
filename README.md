@@ -6,6 +6,6 @@ This repository contains data and scripts in R as showcases related with GIS met
 
 - Run and interact with the example (Jupyter notebook and Binder; it takes time to load): [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/editio/mapping.literature/master)
 
-- Or just visualize it [nbviewer](https://nbviewer.jupyter.org/github/editio/mapping.literature/blob/master/georefence.ipynb)
+- Or just visualize it [nbviewer](https://nbviewer.jupyter.org/github/editio/mapping.literature/blob/master/Georeference.Leaflet.ipynb)
 
 - Or use the script "Georeference.Leaflet.R" to run it within R.
