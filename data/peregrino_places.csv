@@ -1,0 +1,89 @@
+,lugar,lat,lon,freq,name,searched_name
+3,Albania,41,20,5,Albania,Albania
+4,Alcalá,40.48205,-3.35996,3,Alcalá de Henares,Alcalá
+6,Alemania,51.5,10.5,1,Germany,Alemania
+8,Amán,31.95522,35.94503,2,Amman,Amán
+9,Andalucía,36.72016,-4.42034,1,Málaga,Andalucía
+12,Aragón,41.5,-0.66667,1,Aragon,Aragón
+13,Argel,36.73225,3.08746,4,Algiers,Argel
+17,Atenas,37.97945,23.71622,2,Athens,Atenas
+20,Austria,47.33333,13.33333,4,Austria,Austria
+22,Aviñón,43.94834,4.80892,1,Avignon,Aviñón
+23,Ayamonte,37.21329,-7.40807,1,Ayamonte,Ayamonte
+25,Babilonia,32.54083,44.42417,3,Babylon,Babilonia
+26,Barcelona,41.38879,2.15899,36,Barcelona,Barcelona
+31,Beocia,38.33333,23.25,1,Boeotia,Beocia
+33,Burgos,42.34106,-3.70184,1,Burgos,Burgos
+34,Cairo,30.06263,31.24967,1,Cairo,Cairo
+43,Castilla,41.66667,-4.25,1,Castille and León,Castilla
+47,Ceuta,35.89028,-5.3075,6,Ceuta,Ceuta
+50,Compostela,42.88052,-8.54569,1,Santiago de Compostela,Compostela
+51,Constantinopla,41.01384,28.94966,5,Istanbul,Constantinopla
+68,España,40,-4,44,Spain,España
+70,Europa,50.21909,7.42676,5,Western Europe,Europa
+72,Fez,34.03313,-5.00028,2,Fes,Fez
+74,Francia,46,2,15,France,Francia
+76,Galicia,42.2,8.7,1,Galicia,Galicia
+78,Gibraltar,36.14474,-5.35257,1,Gibraltar,Gibraltar
+81,Grecia,39,22,4,Greece,Grecia
+84,Génova,44.40478,8.94439,1,Genoa,Génova
+86,Henares,40.48205,-3.35996,2,Alcalá de Henares,Henares
+89,Huesca,42.13615,-0.4087,3,Huesca,Huesca
+90,Hungría,47,20,1,Hungary,Hungría
+93,Ingalaterra,51.50853,-0.12574,1,London,Ingalaterra
+94,Israel,31.5,34.75,4,Israel,Israel
+95,Italia,42.83333,12.83333,17,Italy,Italia
+97,Jaca,42.56898,-0.54987,2,Jaca,Jaca
+98,Japón,35.68536,139.75309,1,Japan,Japón
+101,Jerusalén,31.76904,35.21633,10,Jerusalem,Jerusalén
+103,Judea,31.58333,35,2,Judaea,Judea
+106,Lacedemonia,37.07446,22.43009,1,Sparti,Lacedemonia
+109,Lesbos,39.20353,26.27655,1,Lesbos Island,Lesbos
+112,Lisboa,38.71667,-9.13333,2,Lisbon,Lisboa
+115,Lérida,41.61674,0.62218,1,Lleida,Lérida
+116,Líbano,33.83333,35.83333,1,Lebanon,Líbano
+117,Madrid,40.4165,-3.70256,13,Madrid,Madrid
+120,Marruecos,32,-6,3,Morocco,Marruecos
+124,Milán,45.46427,9.18951,1,Milan,Milán
+129,Navarra,42.75,-1.66667,2,Navarre,Navarra
+130,Nazaret,32.69925,35.30483,2,Nazareth,Nazaret
+133,Niza,43.70313,7.26608,1,Nice,Niza
+135,Nola,40.92606,14.52816,1,Nola,Nola
+136,Noruega,62,10,1,Norway,Noruega
+138,Nápoles,40.85216,14.26811,2,Naples,Nápoles
+140,Orán,35.69906,-0.63588,1,Oran,Orán
+141,Ostia,41.73212,12.27654,1,Lido di Ostia,Ostia
+143,Palermo,38.13205,13.33561,1,Palermo,Palermo
+144,Palma,39.56939,2.65024,1,Palma,Palma
+145,Pamplona,42.81687,-1.64323,1,Pamplona,Pamplona
+147,Paris,48.85341,2.3488,1,Paris,Paris
+148,Pastrana,37.5635,-1.44863,2,Pastrana,Pastrana
+149,Perpiñán,42.69764,2.89541,1,Perpignan,Perpiñán
+150,Piamonte,45.07049,7.68682,1,Turin,Piamonte
+151,Pirineos,42.08093,-0.32347,1,Huesca-Pirineos Airport,Pirineos
+152,Pisuerga,42.86676,-4.49796,1,Cervera de Pisuerga,Pisuerga
+157,Portugal,39.6945,-8.13057,2,Portugal,Portugal
+162,Remo,43.81725,7.7772,1,Sanremo,Remo
+164,Rey Católico,42.49686,-1.21514,1,Sos del Rey Católico,Rey Católico
+167,Roma,41.89193,12.51133,15,Rome,Roma
+172,Sagunto,39.68333,-0.26667,1,Sagunto,Sagunto
+174,Salamanca,40.96882,-5.66388,3,Salamanca,Salamanca
+187,Sevilla,37.38283,-5.97317,5,Seville,Sevilla
+189,Sicilia,37.75,14.25,2,Sicily,Sicilia
+191,Sion,46.22739,7.35559,1,Sion,Sion
+196,Tesalia,39.5,22,3,Thessaly,Tesalia
+197,Teseo,42.76028,10.23944,1,Marina Di Campo Airport,Teseo
+198,Tetuán,35.57845,-5.36837,1,Tétouan,Tetuán
+199,Tiberia,32.79221,35.53124,7,Tiberias,Tiberia
+201,Toledo,39.8581,-4.02263,9,Toledo,Toledo
+202,Tormes,41.29245,-6.47995,3,Río Tormes,Tormes
+203,Tortosa,40.81249,0.5216,1,Tortosa,Tortosa
+206,Trípol,32.87519,13.18746,1,Tripoli,Trípol
+207,Turia,46.02927,26.03953,1,Comuna Turia,Turia
+209,Tópica,44.2829,16.9402,1,Topića Livade,Tópica
+210,Túnez,36.81897,10.16579,3,Tunis,Túnez
+212,Valencia,39.46975,-0.37739,40,Valencia,Valencia
+215,Venecia,45.43713,12.33265,1,Venice,Venecia
+217,Villafranca,45.39571,10.88853,1,Verona Airport,Villafranca
+219,Vizcaya,43.26271,-2.92528,1,Bilbao,Vizcaya
+220,Zaragoza,41.65606,-0.87734,8,Zaragoza,Zaragoza

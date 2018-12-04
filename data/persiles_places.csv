@@ -1,0 +1,64 @@
+,lugar,lat,lon,freq,name,searched_name
+1,Alemania,51.5,10.5,3,Germany,Alemania
+2,Alhama,37.85103,-1.42507,2,Alhama de Murcia,Alhama
+3,Alicante,38.34517,-0.48149,1,Alicante,Alicante
+4,Andújar,38.03922,-4.05077,1,Andújar,Andújar
+6,Aragón,41.5,-0.66667,2,Aragon,Aragón
+7,Aranjuez,40.03108,-3.60246,1,Aranjuez,Aranjuez
+8,Argel,36.73225,3.08746,9,Algiers,Argel
+9,Badajoz,38.87789,-6.97061,2,Badajoz,Badajoz
+10,Barcelona,41.38879,2.15899,3,Barcelona,Barcelona
+15,Capua,41.10519,14.21269,1,Capua,Capua
+17,Castilla,41.66667,-4.25,1,Castille and León,Castilla
+18,Castilla la Vieja,41.5,-4,1,Castilla la Vieja,Castilla la Vieja
+20,Dinamarca,56,10,1,Denmark,Dinamarca
+24,Escocia,56,-4,2,Scotland,Escocia
+25,España,40,-4,31,Spain,España
+26,Europa,50.21909,7.42676,5,Western Europe,Europa
+29,Florencia,43.77925,11.24626,2,Florence,Florencia
+30,Francia,46,2,20,France,Francia
+33,Génova,44.40478,8.94439,5,Genoa,Génova
+37,Inglaterra,52.16045,-0.70312,18,England,Inglaterra
+38,Irlanda,53,-8,6,Ireland,Irlanda
+41,Italia,42.83333,12.83333,14,Italy,Italia
+42,Jaén,37.76922,-3.79028,1,Jaén,Jaén
+43,Jerusalén,31.76904,35.21633,2,Jerusalem,Jerusalén
+44,Jándula,38.0571,-4.10926,1,Río Jándula,Jándula
+45,Levante,34,36,1,Levant,Levante
+47,Lisboa,38.71667,-9.13333,18,Lisbon,Lisboa
+48,Lombardía,45.66667,9.5,1,Lombardy,Lombardía
+49,Luca,38.14672,16.06625,4,San Luca,Luca
+50,Madama,41.9735,12.86782,1,Castel Madama,Madama
+51,Madrid,40.4165,-3.70256,10,Madrid,Madrid
+52,Malta,35.91667,14.43333,1,Malta,Malta
+55,Mediterráneo,35.88991,-5.30895,3,Parque Marítimo del Mediterráneo,Mediterráneo
+56,Milán,45.46427,9.18951,2,Milan,Milán
+58,Málaga,36.72016,-4.42034,2,Málaga,Málaga
+60,Noruega,62,10,2,Norway,Noruega
+61,Nápoles,40.85216,14.26811,6,Naples,Nápoles
+63,Olimpo,40.08175,22.34954,1,Mount Olympus,Olimpo
+64,Oriente,33.13906,35.85869,1,Middle East,Oriente
+65,Orán,35.69906,-0.63588,1,Oran,Orán
+66,Pafos,34.77679,32.42451,1,Paphos,Pafos
+68,Parténope,40.78966,13.45407,1,Isola Santo Stefano,Parténope
+69,París,48.85341,2.3488,2,Paris,París
+70,Perpiñán,42.69764,2.89541,3,Perpignan,Perpiñán
+72,Pisa,43.70853,10.4036,1,Pisa,Pisa
+74,Portugal,39.6945,-8.13057,6,Portugal,Portugal
+76,Provenza,43.82883,5.78688,1,Manosque,Provenza
+77,Quintanar,39.59369,-3.04165,1,Quintanar de la Orden,Quintanar
+78,Roma,41.89193,12.51133,70,Rome,Roma
+80,Salamanca,40.96882,-5.66388,9,Salamanca,Salamanca
+85,Sicilia,37.75,14.25,2,Sicily,Sicilia
+88,Talavera,39.96348,-4.83076,15,Talavera de la Reina,Talavera
+89,Terrachina,41.29174,13.24359,3,Terracina,Terrachina
+90,Tetis,46.89754,23.04514,1,Tetișu,Tetis
+91,Tetuán,35.57845,-5.36837,1,Tétouan,Tetuán
+94,Toledo,39.8581,-4.02263,3,Toledo,Toledo
+95,Tordesillas,41.50202,-5.00146,1,Tordesillas,Tordesillas
+96,Toscana,43.41667,11,1,Tuscany,Toscana
+97,Transilvania,46.5,25,1,Transylvania,Transilvania
+99,Urbino,43.72621,12.63633,1,Urbino,Urbino
+100,Valencia,39.46975,-0.37739,3,Valencia,Valencia
+101,Valladolid,41.65518,-4.72372,1,Valladolid,Valladolid
+103,Vélez Málaga,36.78107,-4.10266,1,Vélez-Málaga,Vélez Málaga

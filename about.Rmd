@@ -1,0 +1,31 @@
+---
+title: ""
+output: 
+  html_document:
+    toc: false
+    code_folding: NULL
+---
+<br/>
+
+## Technologies 
+
+The places have been automatically extracted using [Stanford](https://nlp.stanford.edu/software/CRF-NER.html) and [Freeling](http://nlp.lsi.upc.edu/freeling), Named Entity Recognizers, and geolocated with the R package [```editio/georeference```](https://github.com/editio/georeference), develop for this project. The final data has been refined manually.
+
+The georeference and tiling of historical maps used [QGIS](http://www.qgis.org). They are hosted in a github repository [```editio/tiles```](https://github.com/editio/tiles) and served through URLs in the XYZ source format (zoom level and tile grid coordinates).
+
+This site, the maps, the statistics and visualizations are build with [R](https://www.r-project.org) within the [R Studio](https://www.rstudio.com) environment, using mostly the packages [R Markdown](https://rmarkdown.rstudio.com) and [Leaflet for R](https://rstudio.github.io/leaflet).
+
+<br/>
+
+## Contact
+
+I am an Assistant Professor (pl: *adiunkt*) at the Department of Romance Philology, University of Wrocław (Poland).
+
+My interests in research and teaching include Spanish Golden Age Literature, German-Spanish Comparative literature, and Digital Humanities.
+
+
+<i class="far fa-envelope"></i> [jose-luis.losada@uwr.edu.pl](mailto:jose-luis.losada@uwr.edu.pl)
+
+![](https://orcid.org/sites/default/files/images/orcid_16x16.png) [http://orcid.org/0000-0002-6530-1328](http://orcid.org/0000-0002-6530-1328)
+
+<i class="fa fa-twitter"></i> @[libropesia](https://twitter.com/libropesia)

@@ -1,0 +1,512 @@
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=8, fig.height=5, echo=FALSE, warning=FALSE, message=FALSE, cache = FALSE)
+```
+
+```{r include=FALSE}
+Sys.setlocale(locale="UTF-8") # Just in case it is not set by the user.
+```
+
+```{r }
+library(leaflet) 
+library(leaflet.extras)
+library(leaflet.minicharts)
+library(dplyr)
+library(DT)
+
+## Load data for all chunks---- 
+
+argenis  = read.csv("data/argenis_places.csv")
+etiopicas = read.csv("data/etiopicas_places.csv")
+peregrino = read.csv("data/peregrino_places.csv")
+persiles = read.csv("data/persiles_places.csv")
+semprilis = read.csv("data/semprilis_places.csv")
+corpus = read.csv("data/corpus_bizantinas.csv")
+piechart_5novels = read.csv("data/piechart_5novels.csv")
+piechart_5novels_percentage = read.csv("data/piechart_5novels_percentage.csv")
+polonia = read.csv("data/polonia-1618-polygons.csv")
+genorodano_no_geo = read.csv("data/Genorodano_itinerary_no-geo.csv")
+semprilis_no_geo = read.csv("data/Semprilis_itinerary_no-geo.csv")
+
+```
+
+<br/>
+
+# Introduction
+
+This page showcases some visualizations for the project "Digital mapping of fictional places in Spanish Early Modern Byzantine novels", wich adresses the possibilities of digital technologies for quantification and visualization of the narrative space in fictional texts. 
+
+Data and scripts are available in the github repository [```editio/mapping.literature```](https://github.com/editio/mapping.literature) and the open-access repository Zenodo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1919007.svg)](https://doi.org/10.5281/zenodo.1919007)
+
+# Corpus of novels
+
+To the Byzantine genre (so called in the Spanish Studies tradition) belong Sixteenth and Seventeenth century novels, such as, Lope de Vega’s _Peregrino_ (1604), Miguel de Cervantes’ _Persiles_ (1617), and Enríquez de Zúñiga's _Semprilis_ (1629). Their narrative structure and chronotope is defined by sea travels, pirates, exoticism, shipwrecks, transcultural encounters. The Hellenistic romance, in particular Heliodorus’ _Ethiopica_, had a considerable influence in the genre, as well as the political novel _Argenis_ of John Barclays. They are not Spanish novels, but they are analyze together for comparation. 
+
+``` {r }
+
+datatable(corpus, style = "bootstrap", options = list(dom = 't'))
+
+```
+
+# Geolocating places
+
+Places have been geolocated using mostly historical gazetteers. An R package [```editio/georeference```](https://github.com/editio/georeference) has been developed in order to automate the process using the Pelagios API. The final data has been refined manually.
+
+```{r }
+datatable(semprilis[1:6,c(5,3,4,6,7)], style = "bootstrap", options = list(dom = 't'))
+```
+
+# Maps visualizations
+
+## Clusters of places
+
+The five novels (each color corresponds with one novel) are mainly clustered as we may expect in the Mediterranean area. Hovering over the clusters appears the coverage of the cluster's bounds. In Cervantes’ _Persiles_ it shows the characteristic North-South Axis; in the Heliodorus _Aethiopica_, clearly the Eastern Mediterranean basin, and in Zuñiga’s _Semprilis_, mostly the whole Mediterranean area.
+
+``` {r echo = TRUE, out.width = '100%'}
+
+leaflet() %>% 
+  
+  setView(9, 43, zoom = 4) %>%
+  addFullscreenControl(pseudoFullscreen = T) %>%
+  addTiles(urlTemplate = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
+         attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela',
+         group="Base (no labels)",
+         option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
+
+  addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
+  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png",
+           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada',
+           group="Roman Empire",
+           option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%  
+
+# Places Heliodoro----  
+  
+    addCircleMarkers(
+    weight = 1,
+    data = etiopicas, lng= ~lon, lat= ~lat,
+    label = ~searched_name,
+    color = "grey",
+    stroke = FALSE, fillOpacity = 0.5,
+    group = "clusters",
+    clusterOptions = markerClusterOptions
+    (iconCreateFunction = JS("function(cluster) {
+                              return new L.DivIcon({
+                              html: '<div style=\"background-color:grey\"><span>' + cluster.getChildCount() + '</div><span>', className: 'marker-cluster'});}")
+                              , freezeAtZoom=2
+      , polygonOptions = list(color = "grey", opacity = 0.5, fillOpacity = 0.3)
+                                )
+                  ) %>% 
+  
+#Places Persiles----  
+ 
+ addCircleMarkers(
+    weight = 1,
+    data = persiles, lng= ~lon, lat= ~lat,
+    label = ~searched_name,
+    color = "tomato",
+    stroke = FALSE, fillOpacity = 0.5,
+    group = "clusters",
+    clusterOptions = markerClusterOptions(iconCreateFunction =
+                                            JS("
+                                               function(cluster) {
+                                               return new L.DivIcon({html: '<div style=\"background-color:tomato\"><span>' + cluster.getChildCount() + '</div><span>', className: 'marker-cluster'});}")
+                          , freezeAtZoom=2
+   , polygonOptions = list(color = "tomato", opacity = 0.5, fillOpacity = 0.3)                          
+                                        )
+                ) %>% 
+
+# Places Semprilis----
+    
+    addCircleMarkers(
+    weight = 1,
+    data = semprilis, lng= ~lon, lat= ~lat,
+    label = ~searched_name,
+    color = "green",
+    stroke = FALSE, fillOpacity = 0.5,
+    group = "clusters",
+    clusterOptions = markerClusterOptions(iconCreateFunction =
+                                            JS("
+                                               function(cluster) {
+                                               return new L.DivIcon({
+                                               html: '<div style=\"background-color:green\"><span>' + cluster.getChildCount() + '</div><span>',
+                                               className: 'marker-cluster'
+                                               });
+                                               }")
+                      , freezeAtZoom=2
+          , polygonOptions = list(color = "green", opacity = 0.5, fillOpacity = 0.3)
+ )  
+      ) %>%   
+    
+# Places Argenis----
+  
+  addCircleMarkers(
+    weight = 1,
+    data = argenis, lng= ~lon, lat= ~lat,
+    label = ~searched_name,
+    color = "white", # aqui para los indiviudales. luego en clusteroptions
+    stroke = FALSE, fillOpacity = 0.5,
+    group = "clusters",
+    clusterOptions = markerClusterOptions(iconCreateFunction =
+                                            JS("
+                                               function(cluster) {
+                                               return new L.DivIcon({
+                                               html: '<div style=\"background-color:white\"><span>' + cluster.getChildCount() + '</div><span>',
+                                               className: 'marker-cluster'
+                                               });
+                                               }")
+                            , freezeAtZoom=2
+      , polygonOptions = list(color = "white", opacity = 0.5, fillOpacity = 0.3)                            
+                                          )
+                                            ) %>% 
+  
+# Places Lope----
+    
+  addCircleMarkers(
+    weight = 1,
+    data = peregrino, lng= ~lon, lat= ~lat,
+    label = ~searched_name,
+    color = "orange", # el color aqu'o no importa, se hace en clusteroptions
+    stroke = FALSE, fillOpacity = 0.5,
+    group = "clusters",
+    clusterOptions = markerClusterOptions(iconCreateFunction =
+                                            JS("
+                                               function(cluster) {
+                                               return new L.DivIcon({
+                                               html: '<div style=\"background-color:orange\"><span>' + cluster.getChildCount() + '</div><span>',
+                                               className: 'marker-cluster'
+                                               });
+                                               }")
+, freezeAtZoom=2
+, polygonOptions = list(color = "orange", opacity = 0.5
+                        , fillOpacity = 0.3
+                        )
+                                          )
+                                            ) %>%
+# Controls
+
+addLayersControl(
+  baseGroups = c("Base (no labels)", "Modern", "Roman Empire"),
+  overlayGroups = c("clusters"),
+  options = layersControlOptions(collapsed = T)) %>%
+  
+  addLegend(position = "bottomleft", opacity = 0.4, 
+          colors = c("orange", "tomato", "green", "white", "gray"), 
+          labels = c("«Peregrino» (1604)", 
+                     "«Persiles» (1617)", 
+                     "«Semprilis» (1629)",
+                     "«Argenis» (1621)",
+                     "«Eti&oacute;picas» (s. III)"
+                     ))
+```
+
+<br/>
+  
+## Places by frequency
+
+The visualisation of places most frequently mentioned offers an other spatial perspective: Spain and Poland for _Semprilis_; Rome as the final destination of the lovers pilgrimage in _Persiles_; the Iberian peninsula (Barcelona, Valencia, Toledo) in  _Peregrino_, novel which indeed takes a turn towards a nationalization of the genre.
+
+``` {r echo = TRUE, out.width = '100%'}
+
+# Assign colors by frequency
+
+pal.semp = colorNumeric(
+  palette = c("#00cc00", "#004d00"),  
+  domain = semprilis$freq)
+
+pal.pere = colorNumeric(
+  palette = c("#ffaf1a", "#cc8500"),
+  domain = peregrino$freq)
+
+pal.per = colorNumeric(
+  palette = c("#ff7d66", "#e62200"),
+  domain = persiles$freq)
+
+pal.arg = colorNumeric(
+  palette = c("#ffffff", "#cccccc"),
+  domain = argenis$freq)
+
+pal.etio = colorNumeric(
+  palette = c("#808080", "#1a1a1a"),
+  domain = etiopicas$freq)
+
+# Run map
+
+leaflet() %>% 
+  
+  setView(9, 43, zoom = 4) %>%
+  addFullscreenControl(pseudoFullscreen = T) %>%
+  addTiles(urlTemplate = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
+         attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela',
+         group="Base (no labels)",
+         option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
+  addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
+  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png",
+           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada',
+           group="Roman Empire",
+           option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
+
+# CircleMarkes for frequencies----
+  
+addCircleMarkers(data=semprilis, lng = ~lon, lat = ~lat, weight = 1, fillOpacity=0.5,
+                   radius = ~sqrt(freq)*3, color = ~pal.semp(freq), label=~searched_name, group="(frq) «Semprilis»")   %>%
+  
+addCircleMarkers(data=peregrino, lng = ~lon, lat = ~lat, weight = 1, fillOpacity=0.5,
+                   radius = ~sqrt(freq)*3, color = ~pal.pere(freq), label=~searched_name, group="(frq) «Peregrino»")   %>%  
+
+addCircleMarkers(data=persiles, lng = ~lon, lat = ~lat, weight = 1, fillOpacity=0.5,
+                   radius = ~sqrt(freq)*3, color = ~pal.per(freq), label=~searched_name, group="(frq) «Persiles»")   %>%  
+  
+addCircleMarkers(data=argenis, lng = ~lon, lat = ~lat, weight = 1, fillOpacity=0.5,
+                   radius = ~sqrt(freq)*3, color = ~pal.arg(freq), label=~searched_name, group="(frq) «Argenis»")   %>%  
+  
+addCircleMarkers(data=etiopicas, lng = ~lon, lat = ~lat, weight = 1, fillOpacity=0.5,
+                   radius = ~sqrt(freq)*3, color = ~pal.etio(freq), label=~searched_name, group="(frq) «Eti&oacute;picas»")   %>% 
+
+# Controls  
+  
+  addLayersControl(
+  baseGroups = c("Base (no labels)", "Modern", "Roman Empire"),
+  overlayGroups = c("(frq) «Eti&oacute;picas»","(frq) «Argenis»", "(frq) «Persiles»", "(frq) «Peregrino»", "(frq) «Semprilis»"),
+  options = layersControlOptions(collapsed = T)) %>%
+    
+  addLegend(position = "bottomleft", opacity = 0.4, 
+          colors = c("orange", "tomato", "green", "white", "gray"), 
+          labels = c("«Peregrino» (1604)", 
+                     "«Persiles» (1617)", 
+                     "«Semprilis» (1629)",
+                     "«Argenis» (1621)",
+                     "«Eti&oacute;picas» (s. III)"
+                     ))
+```
+
+## Places clustered by proximity
+
+The (so called) heat map represents the geographical proximity of the places mencioned in the novels.
+
+``` {r echo = TRUE, out.width = '100%'}
+
+leaflet() %>% 
+  
+  setView(9, 43, zoom = 4) %>%
+  addFullscreenControl(pseudoFullscreen = T) %>%
+  addTiles(urlTemplate = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
+         attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela',
+         group="Base (no labels)",
+         option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
+
+  addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
+  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png",
+           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada',
+           group="Roman Empire",
+           option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%  
+
+
+addHeatmap(data=peregrino, lng = ~lon, lat = ~lat, blur = 20, max = 0.05, radius = 15, intensity = ~freq, group="(density) «Persiles»") %>%
+  
+  #gradient = 'Reds'
+  
+#Persiles----
+
+addHeatmap(data=persiles, lng = ~lon, lat = ~lat, blur = 20, max = 0.05, radius = 15, intensity = ~freq, group="(density) «Peregrino»") %>%
+  
+#Semprilis----
+
+addHeatmap(data=semprilis, lng = ~lon, lat = ~lat, blur = 20, max = 0.05, radius = 15, intensity = ~freq, group="(density) «Semprilis»") %>%
+  
+  addLayersControl(
+  baseGroups = c("Base (no labels)", "Modern", "Roman Empire"),
+  overlayGroups = c("(density) «Persiles»","(density) «Peregrino»", "(density) «Semprilis»"),
+  options = layersControlOptions(collapsed = T)) %>%
+
+hideGroup(c("(density) «Persiles»", "(density) «Peregrino»"))
+  
+```
+
+## Intertextuality. Shared places between novels.
+
+We can have an intertextual glimpse of the common places shared across the genre and its weighted importance in terms of number of mentions for each place, but proportional to the total value in each novel. Rome is mentioned in three novels, but more  significant is in _Persiles_ with a 17.9% of all mentions (click on the piecharts to see the data).  
+
+``` {r echo = TRUE, out.width = '100%'}
+colors_share_places <- c("grey", "white", "tomato", "orange", "green")
+
+basemap <- leaflet() %>%
+  setView(3, 43, zoom = 4) %>%
+  addFullscreenControl(pseudoFullscreen = T) %>%
+  addTiles(urlTemplate = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
+         attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela',
+         group="Base (no labels)",
+         option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
+
+  addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
+  
+  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png",
+           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada',
+           group="Roman Empire",
+           option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) 
+
+# Data for the popup table
+
+popup.table = paste0("<table>
+<div style=\"text-align: center;\">","<font size=2 color=#045FB4>","<a href=",piechart_5novels$geonameid,">", piechart_5novels$lugar, "</a>","</font>","</div> <hr>
+           <tr> <td style=\"text-align:right\"><font size=2 color=#404040>Aethiopica:</font></td>
+           <td style=\"padding-left: 10px; text-align:right\">", piechart_5novels$Aethiopica," (", round((100 * piechart_5novels_percentage$Aethiopica), digits = 2),"%)","</td> </tr>
+            <tr> <td style=\"text-align:right;\"><font size=2 color=black>Argenis:</font></td>
+           <td style=\"padding-left: 10px; text-align:right\">", piechart_5novels$Argenis," (", round((100 * piechart_5novels_percentage$Argenis), digits = 2),"%)","</td> </tr>
+           <tr> <td style=\"text-align:right\"><font size=2 color=tomato>Persiles:</font></td>
+           <td style=\"padding-left: 10px; text-align:right\">", piechart_5novels$Persiles," (", round((100 * piechart_5novels_percentage$Persiles), digits = 2),"%)","</td> </tr>
+          <tr> <td style=\"text-align:right\"><font size=2 color=orange>Peregrino:</font></td>
+           <td style=\"padding-left: 10px; text-align:right\">", piechart_5novels$Peregrino," (", round((100 * piechart_5novels_percentage$Peregrino), digits = 2),"%)","</td> </tr>
+          <tr> <td style=\"text-align:right\"><font size=2 color=green>Semprilis:</font></td>
+           <td style=\"padding-left: 10px; text-align:right\">", piechart_5novels$Semprilis," (", round((100 * piechart_5novels_percentage$Semprilis), digits = 2),"%)","</td> </tr>
+           </table>")
+
+basemap %>%
+  addMinicharts(
+    piechart_5novels$lon, piechart_5novels$lat,
+    type = "pie",
+    chartdata = piechart_5novels_percentage[,c("Aethiopica", "Argenis", "Persiles", "Peregrino", "Semprilis")],
+    popup = popupArgs(html = popup.table),
+    colorPalette = colors_share_places,
+    width = 60 * sqrt(piechart_5novels$total) / sqrt(max(piechart_5novels$total)), legend = F
+  )  %>%
+
+ addLayersControl(
+  baseGroups = c("Base (no labels)", "Modern", "Roman Empire"),
+  options = layersControlOptions(collapsed = T)) %>%
+  addLegend(position = "bottomleft", opacity = 0.4, 
+          colors = c("orange", "tomato", "green", "white", "gray"), 
+          labels = c("«Peregrino» (1604)", 
+                     "«Persiles» (1617)", 
+                     "«Semprilis» (1629)",
+                     "«Argenis» (1621)",
+                     "«Eti&oacute;picas» (s. III)"
+                     ))
+```
+
+## Historical maps and itineraries
+
+Significant to the narrative strategies in these novels is the influence of early modern historical cartography. In _Semprilis_, the places of Sevilla, Larache (the old city of Lixa), the river Lucus on the Atlantic coast of Morocco, all share a common fictional space with the Congo because this spatial narrative has been created following an historical map, which represents the Congo close to them, in the inset (pulse circles refer to places without a reference in the geospace, i.e, unknown islands).
+
+On the other hand ploting the historical borders of the Kingdom of Poland (toggle layers in top right corner) and comparing it with the distribution of other places of action (Constantinople, Black Sea, Tartary), raises the question of whether the author could create the possibility of an access to the coasts of Poland through the Mediterranean.
+
+``` {r echo = TRUE, out.width = '100%'}
+
+leaflet() %>%
+  setView(-8, 35, zoom = 6) %>%
+  addFullscreenControl(pseudoFullscreen = T) %>%
+  addTiles(urlTemplate = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}", attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela', group="Base (no labels)", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
+  addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
+  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png", attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada', group="Roman Empire", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11"))  %>%
+  
+  #  Ortelius Tiles----
+  
+  addTiles(urlTemplate = "https://editio.github.io/tiles/ortelius/{z}/{x}/{y}.png", attribution = '| Ortelius (Fessae, et Marocchi) &copy; <a href="http://www.bne.es">BNE</a>', group="Ortelius (Fessae, et Marocchi)", option=list(continuousWorld=TRUE,tileSize="256", minZoom="0", maxZoom="10"))  %>%
+
+  # Poland historical borders overlay
+  
+  addPolygons(data = polonia, lat= ~y, lng= ~x, color = "orange", weight = 1,smoothFactor = 0.5, opacity = 1.0, fillOpacity = 0.5, label = "Rzeczpospolita Obojga Narodów (Poland circa 1618)", group = "Poland circa 1618") %>%
+
+  # Character's routes
+  
+  addPolylines(data=semprilis_no_geo, lng= ~long, lat= ~lat,  color = "red", group = "Semprilis' route (no geospace)", weight = 4, dashArray = '2,5') %>%  
+
+  addPolylines(data=genorodano_no_geo, lng= ~long, lat= ~lat,  color = "blue", group = "Genorodano's route (no geospace)", weight = 3, dashArray = '3,5') %>%
+
+  # Semprilis y Genorodano. No geospace---- 
+  
+  # Semprilis
+    
+    addCircleMarkers(
+    color = "red",
+    weight = 3,
+    data = semprilis_no_geo, lng= ~long, lat= ~lat, 
+    popup=paste(sep="", "<b>", semprilis_no_geo$lugar,"</b>", "<br/>","<font size=2 color=#045FB4>","Semprilis' Stop nr: ","</font>", semprilis_no_geo$stops_female),
+    radius = 3.5, 
+    label = (~lugar),
+    stroke = T,
+    group = "Semprilis' route (no geospace)", labelOptions = labelOptions(noHide = F, direction = "left", style = list("color" = "red",
+      "box-shadow" = "3px 3px rgba(0,0,0,0.25)",
+      "font-size" = "10px",
+      "border-color" = "rgba(0,0,0,0.5)"
+    )))  %>%
+  
+  # Genorodano
+  
+  addCircleMarkers(
+    color = "blue",
+    weight = 1,
+    data = genorodano_no_geo, lng= ~long, lat= ~lat, 
+    popup=paste(sep="", "<b>", genorodano_no_geo$lugar,"</b>", "<br/>","<font size=2 color=#045FB4>","Genorodano's stop nr: ","</font>", genorodano_no_geo$stops_male),
+    radius = 6, 
+    label= (~lugar),
+    stroke = TRUE,
+    group = "Genorodano's route (no geospace)", labelOptions = labelOptions(noHide = F, direction = "right",style = list("color" = "blue",
+      "box-shadow" = "3px 3px rgba(0,0,0,0.25)",
+      "font-size" = "10px",
+      "border-color" = "rgba(0,0,0,0.5)"
+    )))  %>%
+  
+  # Pulse Markers----
+  
+  addPulseMarkers(data=genorodano_no_geo[c((3),(6:7), (8:9)),], lng= ~long, lat= ~lat, group = "Genorodano's route (no geospace)", icon = makePulseIcon(heartbeat = 2.0, iconSize = 4, color = "blue")) %>%
+
+  addPulseMarkers(data=semprilis_no_geo[c((3),(7),(8:9)),], lng= ~long, lat= ~lat, group = "Semprilis' route (no geospace)", icon = makePulseIcon(heartbeat = 2.0, iconSize = 4, color = "red")) %>%
+  
+  # Controls  
+  
+  addLayersControl(
+  baseGroups = c("Base (no labels)", "Modern", "Roman Empire" , "No map"),
+  overlayGroups = c("Ortelius (Fessae, et Marocchi)", "Poland circa 1618", "Semprilis' route (no geospace)", "Genorodano's route (no geospace)"),
+  options = layersControlOptions(collapsed = T)) %>%
+  
+  hideGroup(c("Poland circa 1618", "Semprilis' route (no geospace)")) %>%
+    
+  addLegend(position = "bottomleft", opacity = 0.4, 
+          colors = c("red", "blue"), 
+          labels = c("Semprilis' route", 
+                     "Genorodano's route"
+                     ))
+```
+
+## Descriptive decoration in historical maps
+
+The decoration on maps, monsters, ships, battles, etc. conveys an additional semantic layers to maps. This Ortelius map represents a battle with sea raiders operating in the Gulf of Cádiz at the southwestern coast of the Iberian Peninsula. Cervantes thematizes its use in the _Persiles_ when the false captives relate their (false) history leaning deictically on a canvas where a ship, a galiot, is drawn.
+
+> "se atreven a pasar el plus ultra de las colunas de Hércules, y a acometer y robar las apartadas islas, que, por estar rodeadas del inmenso mar Océano, pensaban estar seguras, a lo menos de los bajeles turquescos. Este bajel que aquí veis, reducido a pequeño, porque lo pide así la pintura, es una galeota de ventidós bancos" (Cervantes, _Los trabajos de Persiles y Sigismunda_, Carlos Romero (ed.), Madrid, 2004: III, 10, 529)  
+
+``` {r echo = TRUE, out.width = '100%'}
+
+leaflet() %>%
+  setView(-6.5, 36.6, zoom = 10) %>%
+  addFullscreenControl(pseudoFullscreen = T) %>%
+  addTiles(urlTemplate = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}", attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela', group="Base (no labels)", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
+  addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
+  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png", attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada', group="Roman Empire", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11"))  %>%
+  
+  #  Bahía de Cádiz----
+addTiles(urlTemplate = "https://editio.github.io/tiles/ortelius_cadiz/{z}/{x}/{y}.png",
+         attribution = '| Mapa de Ortelius: @ <a href="http://www.bne.es">BNE</a>', 
+         group = "Bahía de Cádiz",
+         option=list(continuousWorld=TRUE, tileSize="256", minZoom="3", maxZoom="13"))  %>%
+
+# Controls  
+  
+  addLayersControl(
+  baseGroups = c("Base (no labels)", "Modern", "Roman Empire" , "No map"),
+  overlayGroups = c("Bahía de Cádiz"),
+  options = layersControlOptions(collapsed = T))
+
+```
+
+# Papers and dissemination
+
+Parts of project were presented at different conferences: _Mapping the Text. Humanistic Scholarship on Spatiotemporalities within Cultural & Æsthetic Objects_, 20-22.04.2018, New York University (see the slides ["Digital mapping of fictional places in Spanish Early Modern Byzantine novels"](http://editio.github.io/slides/literary.maps) ). _Computational Methods in the Humanities_, 4-5.06.2018, University of Lausanne. _Cervantes, su obra y su tiempo. Cuarto centenario (1616-2016)_, 19-21.12.2016, University of Navarra (see the slides ["En la estela del _Persiles_. Cartografía y verosimilitud en Historias de las fortunas de _Semprilis y Genorodano_"](http://editio.github.io/slides/semprilis-mapas) ).
+
+Related papers be published in _Artnodes. Journal on art, science and
+technology_ (forthcoming 2019) and _Revista de Literatura_ (forthcoming 2020). 
+
+# Suggested citation
+ 
+ Losada Palenzuela, José Luis (2018), _Digital mapping of literature_, [<http://editio.github.io/mapping.literature>](http://editio.github.io/mapping.literature)
+ 
+<br/>

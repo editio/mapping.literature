@@ -1,11 +1,7 @@
 # Digital Mapping of Literature
 
-This repository contains data and scripts in R as showcases related with GIS methods to work with visualization of geographical data.
+Visit the project web page at [<http://editio.github.io/mapping.literature>](http://editio.github.io/mapping.literature)
 
-## One example of geocoding and ploting 
+This repository contains data and scripts for the project “Digital mapping of fictional places in Spanish Early Modern Byzantine novels”
 
-- Run and interact with the example (Jupyter notebook and Binder; it takes time to load): [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/editio/mapping.literature/master)
-
-- Or just visualize it [nbviewer](https://nbviewer.jupyter.org/github/editio/mapping.literature/blob/master/Georeference.Leaflet.ipynb)
-
-- Or use the script "Georeference.Leaflet.R" to run it within R.
+It is also available in Zenodo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1919007svg)](https://doi.org/10.5281/zenodo.1919007)

@@ -1,0 +1,26 @@
+name: "Literary mapping"
+output_dir: "."
+navbar:
+  title: "Digital mapping of literature"
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "About"
+      icon: fa-info
+      href: about.html
+output:
+  html_document:
+    theme: default
+    highlight: tango
+    toc: true
+    toc_float: 
+      smooth_scroll: true
+      collapsed: false
+      
+    include:
+      after_body: footer.html
+    css: styles.css
+    code_folding: hide
+    
