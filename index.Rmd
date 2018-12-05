@@ -324,7 +324,7 @@ hideGroup(c("(density) «Persiles»", "(density) «Peregrino»"))
   
 ```
 
-## Intertextuality. Shared places between novels.
+## Intertextuality. Shared places between novels
 
 We can have an intertextual glimpse of the common places shared across the genre and its weighted importance in terms of number of mentions for each place, but proportional to the total value in each novel. For example, Rome is mentioned in three novels, but it is more significant in _Persiles_ with a 17.9% of all mentions (click on the piecharts to see the data).  
 
@@ -474,7 +474,7 @@ leaflet() %>%
 
 ## Descriptive decoration in historical maps
 
-Maps present decorations such as monsters, ships, battles, etc., which convey additional semantic layers to maps. This map by the famous cartographer Abraham Ortelius represents a battle with sea raiders operating in the Gulf of Cádiz at the southwestern coast of the Iberian Peninsula. Cervantes thematizes its use in the _Persiles_ when the false captives relate their (false) history leaning deictically on a canvas where a ship (a galiot) is drawn.
+Maps present decorations such as monsters, ships, battles, etc., which convey additional semantic layers to maps. This map by Gerónimo Chávez published in Ortelius' _Theatrum orbis terrarum_ represents a battle with sea raiders operating in the Gulf of Cádiz at the southwestern coast of the Iberian Peninsula. Cervantes thematizes its use in the _Persiles_ when the false captives relate their (false) history leaning deictically on a canvas where a ship (a galiot) is drawn.
 
 > "se atreven a pasar el plus ultra de las colunas de Hércules, y a acometer y robar las apartadas islas, que, por estar rodeadas del inmenso mar Océano, pensaban estar seguras, a lo menos de los bajeles turquescos. Este bajel que aquí veis, reducido a pequeño, porque lo pide así la pintura, es una galeota de ventidós bancos" (Cervantes, _Los trabajos de Persiles y Sigismunda_, Carlos Romero (ed.), Madrid, 2004: III, 10, 529)  
 
