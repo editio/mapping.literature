@@ -512,7 +512,7 @@ Parts of project were presented at different conferences:
 
 - _Cervantes, su obra y su tiempo. Cuarto centenario (1616-2016)_, 19-21.12.2016, University of Navarra. See the slides ["En la estela del _Persiles_. Cartografía y verosimilitud en Historias de las fortunas de _Semprilis y Genorodano_"](http://editio.github.io/slides/semprilis-mapas).
 
-Related papers will be published in _Artnodes. Journal on art, science and technology_ (forthcoming 2019) and _Revista de Literatura_ (forthcoming 2020). 
+Related papers: Losada Palenzuela, J.L., "Mapeado digital de lugares en la novela bizantina española",  _Artnodes. Journal on art, science and technology_, 23, 2019, DOI: [http://doi.org/10.7238/a.v0i23.3222](http://doi.org/10.7238/a.v0i23.3222) and Losada Palenzuela, J.L.,"El Reino de Loango: fuentes cartográficas y textuales en _Semprilis y Genorodano_ (1629)", _Revista de Literatura_ (forthcoming 2020).
 
 # How to cite
  
