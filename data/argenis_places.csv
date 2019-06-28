@@ -1,6 +1,6 @@
 ,lugar,lat,lon,freq,name,searched_name
 1,Aetna,38,15,1,Aetna M.,Aetna
-2,Africa,37553,18.2514,21,Africa,Africa
+2,Africa,37.553,18.2514,21,Africa,Africa
 4,Aula,40.8042,14.3533,1,Aula superiore Is. Or. II 19,Aula
 5,Baleares,39.5694,2.65,1,Palma,Baleares
 6,Colla,40.7971,26.4206,1,Colla,Colla
@@ -10,7 +10,7 @@
 11,Liguria,45,9,1,Liguria,Liguria
 12,Lipara,38.4674,14954,1,Lipara,Lipara
 13,Lixus,35.1998,-6.1102,5, Lixus,Lixa
-14,Mauritania,35945,-2.3538,12,Mauretania Tingitana,Mauritania
+14,Mauritania,35.945,-2.3538,12,Mauretania Tingitana,Mauritania
 15,Minerva,40.5692,14.3248,1,"Minerva, T.",Minerva
 16,Novi,44.95,20.2833,1,Burgenae,Novi
 18,Numidia,36.5,6.5,1,Numidia,Numidia
