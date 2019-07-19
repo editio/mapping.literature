@@ -1,6 +1,6 @@
 ,lugar,lat,lon,freq,name,searched_name
-2,Aegean,36686,25.6311,1,Südliche Ägäis (Region),Aegean
-3,Africa,37553,18.2514,3,Africa,Africa
+2,Aegean,36.686,25.6311,1,Südliche Ägäis (Region),Aegean
+3,Africa,37.553,18.2514,3,Africa,Africa
 4,Aigina,37.7501,23.4237,4,Aigina,Aigina
 5,Aitolia,39,21.5,1,Aetolia,Aitolia
 8,Athens,37.9717,23.7265,12,Athenae,Athens
@@ -31,6 +31,7 @@
 47,Phthia,39.5,22.5,1,Phthiotis,Phthia
 48,Piraeus,37.9372,23.6446,1,Peiraieus/Piraeus,Piraeus
 49,Poseidon,37.6503,24.0246,1,"Poseidon, T.",Poseidon
+50,Pytho,38.4823,22.5012,1,Delphi,Pytho
 51,Sicily,38,13.5,1,Sicilia,Sicily
 52,Sidon,33.5602,35.3712,2,Sidon/Col. Aurelia Pia,Sidon
 53,Sparta,37.0815,22.4245,1,Sparta,Sparta
