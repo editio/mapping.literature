@@ -1,6 +1,6 @@
 ,lugar,lat,lon,freq,name,searched_name
 3,Albania,41,20,5,Albania,Albania
-4,Alcalá,40.48205,-3.35996,3,Alcalá de Henares,Alcalá
+4,Alcalá,40.48205,-3.35996,5,Alcalá de Henares,Alcalá
 6,Alemania,51.5,10.5,1,Germany,Alemania
 8,Amán,31.95522,35.94503,2,Amman,Amán
 9,Andalucía,36.72016,-4.42034,1,Málaga,Andalucía
@@ -27,7 +27,6 @@
 78,Gibraltar,36.14474,-5.35257,1,Gibraltar,Gibraltar
 81,Grecia,39,22,4,Greece,Grecia
 84,Génova,44.40478,8.94439,1,Genoa,Génova
-86,Henares,40.48205,-3.35996,2,Alcalá de Henares,Henares
 89,Huesca,42.13615,-0.4087,3,Huesca,Huesca
 90,Hungría,47,20,1,Hungary,Hungría
 93,Ingalaterra,51.50853,-0.12574,1,London,Ingalaterra
