@@ -76,8 +76,8 @@ leaflet() %>%
          option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
 
   addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
-  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png",
-           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada',
+  addTiles(urlTemplate = "https://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png",
+           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> | Project by J.L.Losada',
            group="Roman Empire",
            option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%  
 
@@ -242,8 +242,8 @@ leaflet() %>%
          group="Base (no labels)",
          option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
   addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
-  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png",
-           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada',
+  addTiles(urlTemplate = "https://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png",
+           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> | Project by J.L.Losada',
            group="Roman Empire",
            option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
 
@@ -297,8 +297,8 @@ leaflet() %>%
          option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
 
   addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
-  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png",
-           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada',
+  addTiles(urlTemplate = "https://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png",
+           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> | Project by J.L.Losada',
            group="Roman Empire",
            option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%  
 
@@ -341,8 +341,8 @@ basemap <- leaflet() %>%
 
   addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
   
-  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png",
-           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada',
+  addTiles(urlTemplate = "https://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png",
+           attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> | Project by J.L.Losada',
            group="Roman Empire",
            option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) 
 
@@ -400,7 +400,7 @@ leaflet() %>%
   addFullscreenControl(pseudoFullscreen = T) %>%
   addTiles(urlTemplate = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}", attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela', group="Base (no labels)", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
   addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
-  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png", attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada', group="Roman Empire", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11"))  %>%
+  addTiles(urlTemplate = "https://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png", attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> | Project by J.L.Losada', group="Roman Empire", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11"))  %>%
   
   #  Ortelius Tiles----
   
@@ -485,7 +485,7 @@ leaflet() %>%
   addFullscreenControl(pseudoFullscreen = T) %>%
   addTiles(urlTemplate = "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}", attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela', group="Base (no labels)", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
   addProviderTiles ("CartoDB.Positron", group = "Modern") %>% 
-  addTiles(urlTemplate = "http://pelagios.org/tilesets/imperium/{z}/{x}/{y}.png", attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> & <a href="http://commons.pelagios.org">Pelagios</a> | Project by J.L.Losada', group="Roman Empire", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11"))  %>%
+  addTiles(urlTemplate = "https://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png", attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> | Project by J.L.Losada', group="Roman Empire", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11"))  %>%
   
   #  Bahía de Cádiz----
 addTiles(urlTemplate = "https://editio.github.io/tiles/ortelius_cadiz/{z}/{x}/{y}.png",
