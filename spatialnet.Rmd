@@ -1,0 +1,77 @@
+---
+title: ""
+output: 
+  html_document:
+    toc: true
+    code_folding: NULL
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=8, fig.height=5, echo=FALSE, warning=FALSE, message=FALSE, cache = FALSE)
+```
+
+```{r,echo=FALSE}
+load(file="data/maps.RData")
+```
+
+```{r}
+#knitr::read_chunk('scripts/spatial_net_functions.R')
+source('scripts/spatial_net_functions.R', echo = FALSE)
+source('scripts/spatial_net.R', echo = F)
+source('scripts/spatial_net_map.R', echo = F)
+source('scripts/spatial_net_viz.R', echo = F)
+source('scripts/leafsync.R', echo = F)
+```
+
+<br/>
+
+A spatial feature of the genre models —Heliodorus’ _Ethiopica_, Cervantes' _Persiles_— is the presence of a geographical division between **core and periphery**. This is an atempt to automatically compute the geographical periphery and center of the places mentioned in a text using network metrics (eigenvector values). 
+
+Some places have been refined again manually, e.g., locations like Thule has been added in _Persiles_.
+
+# Voronoi diagrams
+
+```{r}
+plot2_voro
+
+plot4_map
+```
+
+# Delaunay triangulation
+
+```{r}
+plot1_both
+plot3_dela
+```
+
+# Graph from a TIN
+
+```{r fig1, message=F}
+par(mar = c(0,0,0,0))
+
+plot(grafo,
+      vertex.size= ifelse(V(grafo)$ec == 1, 8, 3),
+      vertex.label = NA,
+      edge.width=E(grafo)$weight/3,
+      vertex.frame.color = "red",
+      vertex.color = ifelse(V(grafo)$ec == 1, "blue", "red")
+      )
+```
+
+# Metrics (eigenvector centrality)
+
+```{r}
+datatable
+```
+
+# Metrics plot on a map
+```{r}
+m1
+```
+
+# Comparation of novels
+```{r}
+retablo
+```
+
+<br/>

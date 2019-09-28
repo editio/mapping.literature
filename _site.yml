@@ -10,6 +10,9 @@ navbar:
     - text: "About"
       icon: fa-info
       href: about.html
+    - text: "Spatial Networks"
+      icon: fa-project-diagram
+      href: spatialnet.html
 output:
   html_document:
     theme: default

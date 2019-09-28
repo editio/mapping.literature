@@ -516,6 +516,6 @@ Related papers: Losada Palenzuela, J.L., "Mapeado digital de lugares en la novel
 
 # How to cite
  
- Losada Palenzuela, José Luis (2018), _Digital mapping of literature_, [<http://editio.github.io/mapping.literature>](http://editio.github.io/mapping.literature)
+ Losada Palenzuela, José Luis (2019), _Digital mapping of literature_, [<http://editio.github.io/mapping.literature>](http://editio.github.io/mapping.literature)
  
 <br/>
