@@ -2,8 +2,9 @@
 title: ""
 output: 
   html_document:
-    toc: true
-    code_folding: NULL
+    code_folding: null
+    df_print: default
+    toc: yes
 ---
 
 ```{r global_options, include=FALSE}
@@ -11,7 +12,8 @@ knitr::opts_chunk$set(fig.width=8, fig.height=5, echo=FALSE, warning=FALSE, mess
 ```
 
 ```{r,echo=FALSE}
-load(file="data/maps.RData")
+load(file="data/3maps.RData")
+load(file="data/maps.classic.RData")
 ```
 
 ```{r}
@@ -23,13 +25,25 @@ source('scripts/spatial_net_viz.R', echo = F)
 source('scripts/leafsync.R', echo = F)
 ```
 
-<br/>
+<br />
 
-A spatial feature of the genre models —Heliodorus’ _Ethiopica_, Cervantes' _Persiles_— is the presence of a geographical division between **core and periphery**. This is an atempt to automatically compute the geographical periphery and center of the places mentioned in a text using network metrics (eigenvector values). 
+# Core and periphery
 
-Some places have been refined again manually, e.g., locations like Thule has been added in _Persiles_.
+A spatial feature of the genre models —Heliodorus’ _Ethiopica_, Cervantes' _Persiles_— is the presence of a geographical division between **core and periphery**. This is an attempt to automatically compute the geographical periphery and center of the places mentioned in a text using network metrics. 
 
-# Voronoi diagrams
+The places have been refined manually, e.g., locations like Thule has been added in _Persiles_.
+
+# Methodology 
+
+The method consists of converting into spatial networks the geolocated places mentioned in the novels, in order to apply to them measures of centrality (eigenvector values).
+
+The places (converted to spatial points) have been connected with a Delaunay triangulation. The resulted TIN (Triangulated Irregular Network) gets weighted edges based on euclidean distances, so that the value of the weighted edge depends on the distance between points. We applied eigenvector centralities to the graph, resulting in the lowest eigenvector value to the closest points, the highest to the furthest. 
+
+The different steps to get from geolocated places to nodes in a graph are visualized below. 
+
+To compute the transformations, a set of functions in R by Pebesma [(2013)](https://rpubs.com/edzer/spatialnetworks) were used together with the R packages `deldir` [(Turner 2019)](https://cran.r-project.org/web/packages/deldir) and `ggvoronoi` [(Garrett 2018)](https://doi.org/10.21105/joss.01096). For the measures of centrality the `eigen_centrality` function from the `igraph` package [(Csardi 2019)](https://cran.r-project.org/web/packages/igraph) was applied. Data and maps visualization use `ggplot2` [(Wickham 2016)](https://cran.r-project.org/web/packages/ggplot2) and `leaflet` [(Cheng 2018)](https://cran.r-project.org/web/packages/leaflet). 
+
+## Voronoi diagrams
 
 ```{r}
 plot2_voro
@@ -37,14 +51,14 @@ plot2_voro
 plot4_map
 ```
 
-# Delaunay triangulation
+## Delaunay triangulation
 
 ```{r}
 plot1_both
 plot3_dela
 ```
 
-# Graph from a TIN
+## Graph from a TIN
 
 ```{r fig1, message=F}
 par(mar = c(0,0,0,0))
@@ -58,20 +72,51 @@ plot(grafo,
       )
 ```
 
-# Metrics (eigenvector centrality)
+## Metrics of _Persiles_ (eigenvector centrality)
 
 ```{r}
 datatable
 ```
 
-# Metrics plot on a map
+# Plotting metrics on a map
+
+The lowest eigenvector values within the first quantile (Q1) are marked in red.
+
+## 	_Persiles_ core vs periphery
 ```{r}
 m1
 ```
 
-# Comparation of novels
+## 	_Peregrino_
 ```{r}
-retablo
+m2
 ```
 
-<br/>
+## 	_Semprilis_
+```{r}
+m3
+```
+
+## 	_Eustorgio_
+```{r}
+m4
+```
+
+
+# Comparation of Greek Literature 
+
+The geolocations of the _Aethiopica_ and _Odyssey_ are from the [ToposText project](https://topostext.org). 
+
+```{r}
+
+retablo.clasico
+```
+
+<br />
+
+## Gephi Viz
+
+Oracle of Delphi as geographical center in Heliodorus' _Aethiopica_.  The width of the edges represents the distances between points. The network core (Ethiopia, Seres, Egypt,...) shows actually the peripheral places.  
+
+![](images/helidodorus_topostext.png)
+

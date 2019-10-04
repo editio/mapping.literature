@@ -3,10 +3,10 @@
 ###             J.L. Losada 2019              ###
 ###-------------------------------------------###
 
-### ├── spatial_net_functions.R           <--+ you are here
-###     └── spatial_net.R                 
-###         └── spatial_net_metrics.R    
-###         └───└── spatial_net_viz.R
+### ├── spatial_net_functions.R       <--+ you are here
+###     └── spatial_net.R
+###         └── spatial_net_viz.R     
+###         └── spatial_net_map.R    
 
 # This script contains two functions to create a spatial network from spatial points
 # Credits go to Edzer Pebesma (2013). Spatial Networks <http://rpubs.com/edzer/6767>
