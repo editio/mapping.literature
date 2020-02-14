@@ -7,12 +7,12 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
-    - text: "About"
-      icon: fa-info
-      href: about.html
     - text: "Spatial Networks"
       icon: fa-project-diagram
       href: spatialnet.html
+    - text: "About"
+      icon: fa-info
+      href: about.html
 output:
   html_document:
     theme: default
