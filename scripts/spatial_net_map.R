@@ -36,7 +36,7 @@ m1 = leaflet() %>%
   
   addTiles(urlTemplate = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}", attribution = 'Base Map &copy; Esri | Project by J.L. Losada Palenzuela', group="Base (no labels)", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>%
   
-  addTiles(urlTemplate = "https://dare.ht.lu.se/tiles/imperium/{z}/{x}/{y}.png", attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="http://dare.ht.lu.se">DARE</a> | Project by J.L.Losada', group="Roman Empire", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>% 
+  addTiles(urlTemplate = "https://dh.gu.se/tiles/imperium/{z}/{x}/{y}.png", attribution = 'Barrington Roman Empire: (CC BY-SA) <a href="https://dh.gu.se/dare/">DARE</a> | Project by J.L.Losada', group="Roman Empire", option=list(continuousWorld=TRUE, tileSize="256", minZoom="0", maxZoom="11")) %>% 
   
   addPolygons(data=TIN, weight=1.25, group="TIN", color = "grey") %>%  # Delaunay
   
